@@ -16,6 +16,4 @@ namespace DomainLayer.HelpersAndOptions
         public bool IsExpired => DateTime.UtcNow >= ExpiresOn;
         public bool IsActive => !IsExpired && RevokedOn == null;
     }
-
-
 }

@@ -13,10 +13,12 @@ namespace ApplicationLayer.Features.Users.Register
     {
         private readonly IApplicationDbContext _context;
         private readonly IPasswordHasher<User> _hasher;
-        public RegisterUserCommandHandler(IApplicationDbContext context, IPasswordHasher<User> hasher)
+        private readonly IMediator _mediator;
+        public RegisterUserCommandHandler(IApplicationDbContext context, IPasswordHasher<User> hasher, IMediator mediator)
         {
             _context = context;
             _hasher = hasher;
+            _mediator = mediator;
         }
 
         public async Task<int> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
@@ -25,6 +27,7 @@ namespace ApplicationLayer.Features.Users.Register
 
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync(cancellationToken);
+            await _mediator.Publish(new UserRegisteredNotification(user.FullName, user.UserId, user.Email));
             return user.UserId;
         }
     }
