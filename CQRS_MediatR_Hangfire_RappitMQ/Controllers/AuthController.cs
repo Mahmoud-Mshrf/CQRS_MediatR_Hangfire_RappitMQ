@@ -1,4 +1,4 @@
-﻿using ApplicationLayer.Dtos;
+﻿using ApplicationLayer.Common.Dtos;
 using ApplicationLayer.Features.Users.GetUserProfile;
 using ApplicationLayer.Features.Users.Register;
 using MediatR;

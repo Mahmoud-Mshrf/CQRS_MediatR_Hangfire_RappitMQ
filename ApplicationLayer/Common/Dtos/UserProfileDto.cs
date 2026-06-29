@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApplicationLayer.Dtos
+namespace ApplicationLayer.Common.Dtos
 {
     public class UserProfileDto
     {

@@ -1,4 +1,4 @@
-﻿using ApplicationLayer.Dtos;
+﻿using ApplicationLayer.Common.Dtos;
 using ApplicationLayer.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
