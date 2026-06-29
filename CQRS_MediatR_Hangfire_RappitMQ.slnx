@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ApplicationLayer/ApplicationLayer.csproj" />
+  <Project Path="CQRS_MediatR_Hangfire_RappitMQ/CQRS_MediatR_Hangfire_RappitMQ.csproj" />
+</Solution>
