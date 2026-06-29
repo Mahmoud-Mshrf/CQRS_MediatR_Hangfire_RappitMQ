@@ -13,6 +13,7 @@ namespace ApplicationLayer
             {// Scan the Application assembly. If you find handlers, register them automatically
                 cfg.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
             });
+            services.AddAutoMapper(cfg => { },typeof(DependencyInjection).Assembly);
             return services;
         }
     }
