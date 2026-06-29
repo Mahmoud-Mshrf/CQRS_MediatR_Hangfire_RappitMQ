@@ -5,5 +5,5 @@ using System.Text;
 
 namespace ApplicationLayer.Features.Users.Register
 {
-    public sealed record RegisterUserCommand(string FullName,string Email,string Password,int Age):IRequest<Guid>;
+    public sealed record RegisterUserCommand(string FullName,string Email,string Password,int Age):IRequest<int>;
 }

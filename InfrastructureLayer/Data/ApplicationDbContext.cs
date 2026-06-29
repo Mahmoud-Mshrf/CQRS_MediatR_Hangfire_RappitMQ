@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DomainLayer;
 using DomainLayer.Models;
+using ApplicationLayer.Interfaces;
 namespace InfrastructureLayer.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext,IApplicationDbContext
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
