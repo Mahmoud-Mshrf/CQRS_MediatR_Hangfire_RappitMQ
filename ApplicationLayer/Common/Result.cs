@@ -16,7 +16,7 @@ namespace ApplicationLayer.Common
         public static Result Success() => new Result(true, null);
         public static Result Failure(Error error) => new(false, error);
     }
-    public sealed record Error(int Code, string Discription);
+    public sealed record Error(string Code, string Discription);
 
     public sealed class Result<T> : Result
     {
@@ -37,6 +37,29 @@ namespace ApplicationLayer.Common
         public static Result<T> Failure(Error error)
         {
             return new(error);
+        }
+    }
+    public static class Errors
+    {
+        public static class Users
+        {
+            public static readonly Error EmailAlreadyExists =
+                new(
+                    "Users.EmailAlreadyExists",
+                    "A user with this email already exists.");
+
+            public static readonly Error UserNotFound =
+                new(
+                    "Users.UserNotFound",
+                    "The specified user was not found.");
+        }
+
+        public static class Roles
+        {
+            public static readonly Error RoleNotFound =
+                new(
+                    "Roles.RoleNotFound",
+                    "The specified role was not found.");
         }
     }
 }
