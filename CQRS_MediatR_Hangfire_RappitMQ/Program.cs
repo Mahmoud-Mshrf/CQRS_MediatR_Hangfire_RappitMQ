@@ -15,7 +15,7 @@ namespace CQRS_MediatR_Hangfire_RappitMQ
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
-
+            builder.Services.AddSwaggerGen();
             builder.Services.AddApplication();
             builder.Services.AddInfrastructure(builder.Configuration);
             var app = builder.Build();
@@ -24,8 +24,11 @@ namespace CQRS_MediatR_Hangfire_RappitMQ
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
-
+            app.UseExceptionHandler("/error");
+            app.UseStatusCodePagesWithRedirects("/error/{0}");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
