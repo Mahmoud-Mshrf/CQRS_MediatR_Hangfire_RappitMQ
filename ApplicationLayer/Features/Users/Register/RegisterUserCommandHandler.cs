@@ -25,8 +25,8 @@ namespace ApplicationLayer.Features.Users.Register
 
         public async Task<Result<int>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var existedUser = _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
-            if (existedUser == null)
+            var existedUser =await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
+            if (existedUser != null)
             {
                 return Result<int>.Failure(Errors.Users.EmailAlreadyExists);
             }

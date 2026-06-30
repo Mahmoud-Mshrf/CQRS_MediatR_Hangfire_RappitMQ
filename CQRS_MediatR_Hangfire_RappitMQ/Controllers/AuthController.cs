@@ -22,8 +22,12 @@ namespace CQRS_MediatR_Hangfire_RappitMQ.Controllers
         [HttpPost("register-new-user")]
         public async Task<IActionResult> RegisterAsync(RegisterUserCommand command)
         {
-           var id = await _mediator.Send(command);
-            return Ok(id);
+            var result = await _mediator.Send(command);
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Error.Discription);
+            }
+            return Ok(result.Value);
         }
         [HttpGet("get-user-profile")]
         public async Task<ActionResult<UserProfileDto>> GetUserAsync([Required]int id)
