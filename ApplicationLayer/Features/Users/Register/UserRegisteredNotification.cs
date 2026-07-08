@@ -27,7 +27,8 @@ namespace ApplicationLayer.Features.Users.Register
             body = body.Replace("{{UserName}}", notification.FullName);
             body = body.Replace("{{VerificationCode}}", new Random(100000).Next(999999).ToString());
             emailMessage.Body = body;
-            _jobScheduler.Enqueue<IEmailService>(x => x.SendEmailAsync(emailMessage));
+            //_jobScheduler.Enqueue<IEmailService>(x => x.SendEmailAsync(emailMessage));
+            await _emailService.SendEmailAsync(emailMessage);
         }
     }
 }

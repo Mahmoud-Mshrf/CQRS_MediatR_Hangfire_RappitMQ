@@ -36,5 +36,10 @@ namespace CQRS_MediatR_Hangfire_RappitMQ.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+        [HttpGet("test-error")]
+        public async Task<ActionResult<UserProfileDto>> TestError()
+        {
+            throw new Exception("This is a test exception.");
+        }
     }
 }
